@@ -7,6 +7,7 @@ using std::string;
 #include<fstream>
 #include<cmath>
 using namespace std;
+
 vector<vector<int>> read_file(const string & fname) {
 	string line;
 	vector<int> line_int;
@@ -58,5 +59,47 @@ string get_time(const vector<vector<int>>& v) {
 	string m = to_string(minute);
 	string r;
 	r = h + ":" + m;
+	return r;
+}
+
+string get_date(const vector<vector<int>>& v) {
+	int month = col_to_int(v, 6);
+	int day = col_to_int(v, 5);
+	int year = col_to_int(v, 7);
+	string m = to_string(month);
+	string d = to_string(day);
+	string y = to_string(year);
+	string r;
+	if (m.size() == 1)
+		m.insert(0, "0");
+	if (d.size() == 1)
+		d.insert(0, "0");
+	if (y.size() == 1)
+		y.insert(0, "0");
+	r = m + "/" + d + "/" + "20" + y;
+	return r;
+}
+
+string get_serial(const vector<vector<int>>& v) {
+	int one = col_to_int(v, 13);
+	int two = col_to_int(v, 12);
+	int three = col_to_int(v, 11);
+	int four = col_to_int(v, 10);
+	string o = to_string(one);
+	string t = to_string(two);
+	string th = to_string(three);
+	string f = to_string(four);
+	if (o.size() == 1)
+		o.insert(0, "0");
+	if (t.size() == 1)
+		t.insert(0, "0");
+	if (th.size() == 1)
+		th.insert(0, "0");
+	if (f.size() == 1)
+		f.insert(0, "0");
+
+	string r;
+
+	r = o + t + th + f;
 	return r;
 }
