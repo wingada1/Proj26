@@ -57,6 +57,10 @@ string get_time(const vector<vector<int>>& v) {
 	int minute = col_to_int(v, 1);
 	string h = to_string(hour);
 	string m = to_string(minute);
+	if (h.size() == 0)
+		h.insert(0, "0");
+	if (m.size() == 0)
+		m.insert(0, "0");
 	string r;
 	r = h + ":" + m;
 	return r;
